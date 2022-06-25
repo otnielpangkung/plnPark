@@ -35,12 +35,12 @@ class Controller {
 	}
 
 	static getAlldata(req, res) {
-		console.log('-------------------------------');
-		// console.log('tes');
+		console.log('tes');
 		InOut.findAll({
 			order: [['timeIn', 'desc']],
 		})
 			.then((data) => {
+				console.log(data[0]);
 				let dataLength = data.length;
 				const startIndex = (req.query.page - 1) * req.query.limit;
 				const endIndex = req.query.page * req.query.limit;
@@ -63,7 +63,6 @@ class Controller {
 			},
 		})
 			.then((data) => {
-				// console.log(data, '======');
 				res.status(200).json(data);
 			})
 			.catch((err) => {
@@ -71,12 +70,12 @@ class Controller {
 			});
 	}
 
-	static addData(req, res) {}
-
 	static inCar(req, res) {
+		console.log(req.body);
 		InOut.create({
 			type: req.body.type,
 			plat: req.body.plat,
+			milik: req.body.milik,
 			timeIn: new Date(),
 		})
 			.then((data) => {
@@ -98,6 +97,20 @@ class Controller {
 				},
 			}
 		)
+			.then((data) => {
+				res.status(200).json(data);
+			})
+			.catch((err) => {
+				res.status(401).json(err);
+			});
+	}
+
+	static deleteData(req, res) {
+		InOut.destroy({
+			where: {
+				id: req.params.id,
+			},
+		})
 			.then((data) => {
 				res.status(200).json(data);
 			})

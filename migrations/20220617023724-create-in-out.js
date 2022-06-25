@@ -11,6 +11,9 @@ module.exports = {
 			type: {
 				type: Sequelize.STRING,
 			},
+			milik: {
+				type: Sequelize.STRING,
+			},
 			plat: {
 				type: Sequelize.STRING,
 			},

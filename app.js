@@ -16,9 +16,9 @@ app.post('/login', Controller.Login);
 app.post('/register', Controller.Register);
 app.get('/data', Controller.getAlldata);
 app.get('/data/stock', Controller.getStock);
-app.post('/data', Controller.addData);
 app.post('/data/in', Controller.inCar);
 app.patch('/data/out', Controller.outCar);
+app.delete('/data/:id', Controller.deleteData);
 
 app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`);

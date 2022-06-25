@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 	InOut.init(
 		{
 			type: DataTypes.STRING,
+			milik: DataTypes.STRING,
 			plat: DataTypes.STRING,
 			timeIn: DataTypes.DATE,
 			timeOut: DataTypes.DATE,
